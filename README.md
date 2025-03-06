@@ -42,3 +42,42 @@ plt.show()
 
 - Python is a versatile skill, highly demanded accross all three roles, but most prominently for Data Engineers (64%) and Data Scientists (62%).
 - SQL is the most required skills for Data Analysts and it is almost as demanded as python for Data Engineers.
+
+## 2. How are in-demand skills trending for Data Analysts in Hungary?
+
+To find the answer, I filtered data analyst positions and grouped the skills by the month of the job postings. This got me the top 5 skills of data analysts by month, showing how popular skills were throughout 2023.
+
+View the notebook with detailes steps here:
+[3_Skills_Trend.ipynb](3_Projects/3_Skills_Trend.ipynb)
+
+### Data Visualization
+
+```python
+df_plot = df_DA_HU_percent.iloc[:, :5]
+xtick_labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+plt.figure(figsize=(12, 8))
+sns.lineplot(data=df_plot, dashes=False, palette='tab10')
+sns.set_theme(style='ticks')
+
+plt.title('Trending Top Skills for Data Analysts in Hungary')
+plt.ylabel('Likelyhood in Job Posting')
+plt.xlabel('2023')
+plt.xticks(ticks=range(1, 13), labels=xtick_labels)
+
+from matplotlib.ticker import PercentFormatter
+ax = plt.gca()
+ax.yaxis.set_major_formatter(PercentFormatter(decimals=0))
+
+plt.show()
+```
+
+### Results
+
+![Visualization of in-demand skills for Data Analysts in Hungary](3_Projects/images/skills_trend_da_hu.png)
+
+### Insights
+
+- SQL is consistently the most in-demand skill, peaking at 63.83% in July.
+- Excel and Python see significant spikes, especially in April (Excel) and June (Python).
+- Power BI and Tableau show a decrease in demand toward the end of the year, with Power BI dropping to 20% in December.
